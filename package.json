@@ -1,12 +1,11 @@
 {
   "name": "rabkit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "./lib/index.js",
-  "module": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lib": "rimraf lib es && npm run generate",
+    "lib": "rimraf lib && npm run generate",
     "generate": "cross-env NODE_ENV=production webpack --config ./webpack.config.js",
     "generate:umd": "cross-env NODE_ENV=production OUTPUT_TYPE=umd webpack --config ./webpack.config.js",
     "generate:esm": "cross-env NODE_ENV=production OUTPUT_TYPE=esm webpack --config ./webpack.config.js"
@@ -15,7 +14,7 @@
     "type": "git",
     "url": "git+https://github.com/adyoow/rabkit.git"
   },
-  "files": ["lib/", "README"],
+  "files": ["lib/", "packages/", "README"],
   "keywords": [],
   "author": "Adyo",
   "license": "ISC",

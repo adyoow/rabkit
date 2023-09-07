@@ -5,7 +5,7 @@ const outputType = process.env.OUTPUT_TYPE // 读取当前的输出格式（UMD/
 
 const getEntry = () => {
   // 打包输出 ESM 格式文件，最终要输出多个文件，便于实现按需加载，因此设置为多入口。
-  return './src/index.js'
+  return './packages/index.js'
 }
 const getOutput = () => {
   return {
