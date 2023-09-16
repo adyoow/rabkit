@@ -1,17 +1,19 @@
 # rabkit
 
-## How to install
+## Install
 
 ```shell
-npm install -S rabkit
+npm install --save rabkit
 ```
 
-## How to use
+## Usage
 
 ```js
-const rabkit = require('rabkit')
-// or 
+// using ES6 modules
 import rabkit from 'rabkit'
+
+// using CommonJS modules
+var rabkit = require('rabkit')
 
 rabkit.isArray([]) // true
 ```
