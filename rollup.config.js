@@ -3,6 +3,8 @@ import commonjs from 'rollup-plugin-commonjs'
 import { terser } from 'rollup-plugin-terser'
 import nodeResolve from 'rollup-plugin-node-resolve'
 import replace from 'rollup-plugin-replace'
+import livereload from 'rollup-plugin-livereload';
+import serve from 'rollup-plugin-serve';
 import filesize from 'rollup-plugin-filesize'
 import pkg from './package.json'
 
@@ -13,15 +15,15 @@ let envPlugins = []
 if (isProd) {
   envPlugins = [terser(), filesize()]
 } else {
-  // envPlugins = [
-  //   livereload(),
-  //   serve({
-  //     open: true,
-  //     openPage: '/public/index.html',
-  //     port: 3000,
-  //     contentBase: './'
-  //   })
-  // ]
+  envPlugins = [
+    livereload(),
+    serve({
+      open: true,
+      openPage: '/public/index.html',
+      port: 3000,
+      contentBase: './'
+    })
+  ]
 }
 
 export default {
