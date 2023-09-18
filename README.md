@@ -10,11 +10,10 @@ npm install --save rabkit
 
 ```js
 // using ES6 modules
-import rabkit from 'rabkit'
+import { isArray } from 'rabkit'
 
 // using CommonJS modules
-var rabkit = require('rabkit')
+const { isArray } = require('rabkit')
 
-rabkit.isArray([]) // true
+isArray([]) // true
 ```
-

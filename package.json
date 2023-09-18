@@ -1,6 +1,6 @@
 {
   "name": "rabkit",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "",
   "private": false,
   "main": "lib/index.cjs.js",
