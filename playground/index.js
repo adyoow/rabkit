@@ -1,7 +1,7 @@
-// export
 function toChineseNum(num) {
-  const numArr = num
-    .toString()
+  if (typeof num !== 'number') throw new Error('num is not a number')
+  const numArr = Number.prototype.toString
+    .call(num)
     .replace(/(?=(\d{4})+$)/g, ',')
     .split(',')
     .filter(Boolean)
@@ -12,24 +12,34 @@ function toChineseNum(num) {
   const bigUnits = ['', '万', '亿']
 
   function _transform(numberStr) {
-    let str = ''
+    let result = ''
     for (let i = 0; i < numberStr.length; i++) {
       const digit = +numberStr[i]
       const c = chars[digit]
       const u = units[numberStr.length - 1 - i]
       // todo
-
-      str += c + u
+      if (digit === 0) {
+        if (result[result.length - 1] !== chars[0]) {
+          result += c
+        }
+      } else {
+        // 针对 十 开头的数字
+        if (digit === 1 && u === '十' && i === 0) result += u
+        else result += c + u
+        // result += c + u
+      }
+    }
+    if (result[result.length - 1] === chars[0]) {
+      result = result.slice(0, -1)
     }
 
-    // console.log(str)
-    return str
+    return result
   }
   numArr.forEach((numStr, i) => {
     const part = numStr
-    // console.log(part)
     const c = _transform(part)
     const u = c ? bigUnits[numArr.length - i - 1] : ''
+
     resultStr += c + u
   })
 
@@ -37,5 +47,5 @@ function toChineseNum(num) {
   return resultStr
 }
 
-toChineseNum('123123')
+toChineseNum(112)
 // 12,3123
