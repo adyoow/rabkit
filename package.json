@@ -1,6 +1,6 @@
 {
   "name": "rabkit",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "",
   "private": false,
   "main": "lib/index.cjs.js",
@@ -36,11 +36,12 @@
   },
   "homepage": "https://github.com/adyoow/rabkit#readme",
   "devDependencies": {
-    "rimraf": "^5.0.1",
     "@babel/core": "^7.18.2",
     "@babel/preset-env": "^7.18.2",
     "cross-env": "^7.0.3",
+    "rimraf": "^5.0.1",
     "rollup": "^2.75.5",
+    "rollup-plugin-alias": "^2.2.0",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-filesize": "^9.1.2",

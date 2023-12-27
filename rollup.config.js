@@ -1,12 +1,20 @@
+import path from 'path'
+import { fileURLToPath } from 'url'
 import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
 import { terser } from 'rollup-plugin-terser'
 import nodeResolve from 'rollup-plugin-node-resolve'
 import replace from 'rollup-plugin-replace'
-import livereload from 'rollup-plugin-livereload';
-import serve from 'rollup-plugin-serve';
+import livereload from 'rollup-plugin-livereload'
+import serve from 'rollup-plugin-serve'
 import filesize from 'rollup-plugin-filesize'
+import alias from 'rollup-plugin-alias'
 import pkg from './package.json'
+
+// __filename包含当前模块文件的绝对路径
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+const pathResolve = (p) => path.resolve(__dirname, p)
 
 const NODE_ENV = process.env.NODE_ENV
 const isProd = NODE_ENV === 'production'
@@ -49,6 +57,13 @@ export default {
     }),
     nodeResolve(),
     commonjs(),
+    alias({
+      resolve: ['.jsx', '.js', 'json'], // 可选，默认情况下这只会查找 .js 文件或文件夹
+      entries: {
+        '@packages': pathResolve('packages'),
+        _: __dirname
+      }
+    }),
     replace({
       'process.env.NODE_ENV': JSON.stringify(NODE_ENV)
     }),
