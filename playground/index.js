@@ -47,5 +47,4 @@ function toChineseNum(num) {
   return resultStr
 }
 
-toChineseNum(112)
-// 12,3123
+toChineseNum(112) // 12,3123
